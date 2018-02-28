@@ -1,0 +1,57 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['投稿设置','用户管理']" icon="fa fa-lg fa-fw fa-cubes" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+	   <div id="tabs-pills-widget-widget" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false"
+        data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-jarvis-widget>
+ 	      <header>
+	        <ul id="widget-tab-1" class="nav pull-left nav-tabs">
+	            <li class="active">
+	                <a data-toggle="tab" href="#tabs-member"><span class="hidden-mobile hidden-tablet">可审核用户</span> </a>
+	            </li>
+	            <li>
+	                <a data-toggle="tab" href="#tabs-column"><span class="hidden-mobile hidden-tablet">可审核栏目</span></a>
+	            </li>
+	        </ul>
+	      </header>
+	      <div>
+		     <div class="widget-body padding">
+		          <div class="tab-content padding-10">
+			              <div class="row">	
+			                 <div class="col-md-12">
+			                    <span>当前审核用户：{{memberName}}</span>
+			                 </div>
+			              </div><hr/>
+	           	          <div id="tabs-member" class="tab-pane fade in active">
+				            <div class="widget-body">
+					            <select multiple="multiple" name="members" ng-model="memberIds" size="20" data-smart-duallistbox data-non-selected-filter="" 
+					                    items="sendMembers" item-name="memberName">
+					            </select>
+				            </div>
+				          </div>
+				          
+				          <div id="tabs-column" class="tab-pane fade">
+				             <div class="widget-body">
+					            <select multiple="multiple" name="sources" ng-model="dataSourceIds" size="20" data-smart-duallistbox data-non-selected-filter=""
+					                    items="dataSources" item-name="title">
+					            </select>
+				             </div>
+				          </div>
+		          </div>
+	          </div>
+          </div>
+       </div>
+      <div class="form-actions">
+           <div class="row">
+               <div class="col-md-12">
+                   <button class="btn btn-default" type="button" ng-click="back()"> 返回</button>
+                   <button class="btn btn-primary" type="button" ng-click="saveSelected()">
+                       <i class="fa fa-save"></i>提交
+                   </button>
+               </div>
+           </div>
+       </div>
+    </section>
+</div>

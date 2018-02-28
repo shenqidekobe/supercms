@@ -1,0 +1,26 @@
+<form id="pluginForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">插件名称</label> <label class="input"> <input name="plugName" ng-model="plugin.plugName" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">插件标识</label> <label class="input"> <input name="fieldName" ng-model="plugin.fieldName" type="text">
+				</label>
+			</section>
+		</div>
+		<section>
+			<label class="label">插件地址</label> <label class="input"><input name="id" ng-model="plugin.id" type="hidden"> <input name="plugContent" ng-model="plugin.plugContent" type="text">
+			</label>
+		</section>
+		<section>
+            <label class="label">插件参数</label> <label class="textarea"> <textarea name="jsDefinition" ng-model="plugin.jsDefinition" rows="3" class="custom-scroll"></textarea>
+            </label>
+        </section>
+        <section>
+            <label class="label">说明</label> <label class="textarea"> <textarea name="attr1" ng-model="plugin.attr1" rows="3" class="custom-scroll"></textarea>
+            </label>
+        </section>
+	</fieldset>
+</form>

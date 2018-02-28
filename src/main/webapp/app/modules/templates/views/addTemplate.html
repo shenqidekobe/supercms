@@ -1,0 +1,43 @@
+<div id="content">
+	<div class="row" ng-switch=templateType>
+		<big-breadcrumbs ng-switch-when="index" items="['模版','首页模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<big-breadcrumbs ng-switch-when="list" items="['模版','列表模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<big-breadcrumbs ng-switch-when="content" items="['模版','内容模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<big-breadcrumbs ng-switch-when="custom" items="['模版','自定义页模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+
+	<!-- widget grid -->
+	<section id="widget-grid" widget-grid>
+
+		<!-- row -->
+		<div class="row">
+			<!-- NEW WIDGET ROW START -->
+			<div class="col-sm-12">
+
+				<div jarvis-widget id="wid-id-0" data-widget-colorbutton="false"
+					data-widget-editbutton="false" data-widget-deletebutton="false"
+					data-widget-sortable="false">
+					<header>
+						<h2>编辑模版</h2>
+					</header>
+					<!-- widget div-->
+					<div>
+						<!-- widget content -->
+						<div class="widget-body">
+							<bootstrap-template-form></bootstrap-template-form>
+						</div>
+						<!-- end widget content -->
+					</div>
+					<!-- end widget div -->
+
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+
+
+</div>

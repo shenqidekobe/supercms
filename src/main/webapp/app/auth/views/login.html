@@ -1,0 +1,52 @@
+<header id="header" class="animated fadeInDown">
+
+	<div id="logo-group">
+		<span id="logo"> <img src="styles/img/logo3.png" alt="DW CMS">
+		</span>
+	</div>
+
+
+</header>
+<div id="main" role="main" class="animated fadeInDown">
+	<div id="content" class="container">
+		<div class="row">
+			<div class="col-xs-12 col-sm-12 col-md-5 col-lg-4" style="margin: 0 auto;
+	float: none;">
+				<div class="well no-padding">
+					<form method="post" id="login-form" class="smart-form client-form" data-smart-validate-form>
+						<header>登录 </header>
+						<fieldset>
+							<section>
+								<label class="label">帐号:</label> <label class="input"> <i class="icon-append fa fa-user"></i> 
+								<input type="input" name="username" ng-model="usernamePasswordToken.username" data-smart-validate-input data-required 
+									data-message-required="请输入用户名"> <b class="tooltip tooltip-top-right"><i class="fa fa-user txt-color-teal"></i> 请输入用户名
+										</b></label>
+							</section>
+							<section>
+								<label class="label">密码:</label> <label class="input"> <i class="icon-append fa fa-lock"></i> 
+								<input type="password" name="password" ng-model="usernamePasswordToken.password" data-smart-validate-input data-required data-minlength="3"
+									data-maxnlength="20" data-message-required="请输入密码"> <b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> 请输入密码</b>
+								</label>
+								<!-- 
+								<div class="note">
+									<a ui-sref="forgotPassword">忘记密码?</a>
+								</div>
+								 -->
+							</section>
+							<section>
+                                <label class="checkbox">
+                                    <input type="checkbox" name="autoLogin" ng-checked="autoLogin" ng-model="autoLogin">
+                                    <i></i>自动登录</label>
+                            </section>
+						</fieldset>
+						<footer>
+							<button type="button" ng-click="login()" class="btn btn-primary">提交</button>
+						</footer>
+					</form>
+				</div>
+				<ul class="list-inline text-center">
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

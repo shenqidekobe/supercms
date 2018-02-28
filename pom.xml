@@ -1,0 +1,115 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.dw</groupId>
+		<artifactId>aries-build</artifactId>
+		<version>1.0</version>
+	</parent>
+	<artifactId>suppercms</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>CMS New Edition</name>
+	<packaging>war</packaging>
+	<properties>
+		<m2eclipse.wtp.contextRoot>/</m2eclipse.wtp.contextRoot>
+	</properties>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<env>dev</env>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<env>prod</env>
+			</properties>
+		</profile>
+	</profiles>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<configuration>
+					<port>80</port>
+					<path>/</path>
+					<uriEncoding>UTF-8</uriEncoding>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<repositories>
+		<repository>
+			<id>thischwa-repo</id>
+			<url>http://maven-repo.thischwa.codes</url>
+		</repository>
+	</repositories>
+	<dependencies>
+		<dependency>
+			<groupId>com.dw</groupId>
+			<artifactId>search_support</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/search_support.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.dw</groupId>
+			<artifactId>aries-framework</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.websocket</groupId>
+					<artifactId>javax.websocket-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp.jstl</groupId>
+			<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.dw</groupId>
+			<artifactId>manuscript-support</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>aspectj</groupId>
+			<artifactId>aspectjrt</artifactId>
+			<version>1.5.4</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.apache.oltu.oauth2</groupId> <artifactId>org.apache.oltu.oauth2.authzserver</artifactId> 
+			<version>1.0.0</version> </dependency> <dependency> <groupId>org.apache.oltu.oauth2</groupId> 
+			<artifactId>org.apache.oltu.oauth2.resourceserver</artifactId> <version>1.0.0</version> 
+			</dependency> <dependency> <groupId>org.ow2.asm</groupId> <artifactId>asm</artifactId> 
+			<version>5.0.4</version> </dependency> <dependency> <groupId>org.ow2.asm</groupId> 
+			<artifactId>asm-util</artifactId> <version>5.0.4</version> </dependency> 
+			<dependency> <groupId>org.ow2.asm</groupId> <artifactId>asm-commons</artifactId> 
+			<version>5.0.4</version> </dependency> -->
+	</dependencies>
+</project>

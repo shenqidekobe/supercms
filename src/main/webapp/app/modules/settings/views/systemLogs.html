@@ -1,0 +1,145 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['系统设置','系统日志']"
+			icon="fa fa-lg fa-fw fa-sitemap"
+			class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+
+	<!-- start section -->
+	<section id="widget-grid" widget-grid>
+
+		<div id="tabs-pills-widget-widget" data-widget-colorbutton="false"
+			data-widget-editbutton="false" data-widget-togglebutton="false"
+			data-widget-deletebutton="false" data-widget-fullscreenbutton="false"
+			data-widget-custombutton="false" data-jarvis-widget>
+			<header>
+				<ul id="widget-tab-1" class="nav pull-left nav-tabs">
+					<li class="active" ng-click="searchLogsHandler('system_module')"><a data-toggle="tab" href="#tabs-a"><span
+							class="hidden-mobile hidden-tablet">系统操作日志</span> </a></li>
+					<li ng-click="searchLogsHandler('system_login')"><a data-toggle="tab" href="#tabs-a"><span
+                            class="hidden-mobile hidden-tablet">系统登录日志</span></a></li>
+                    <li ng-click="searchLogsHandler('manuscript')"><a data-toggle="tab" href="#tabs-a"><span
+                            class="hidden-mobile hidden-tablet">投稿系统日志</span></a></li>
+                    <li ng-click="searchLogsHandler('manuscript_login')"><a data-toggle="tab" href="#tabs-a"><span
+                            class="hidden-mobile hidden-tablet">投稿登录日志</span></a></li>
+				</ul>
+			</header>
+			<div>
+				<div class="widget-body no-padding">
+					<div class="tab-content padding-10">
+					    	<div id="tabs-a" class="widget-body-toolbar tab-pane active">
+								<form class="form-inline">
+								    <div class="form-group">
+										<label for="title">操作员：</label>
+										<select ng-model="logs.userId" class="form-control" style="width: 110px" ng-options="item.id as item.name for item in users">
+										    <option value="">所有用户</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="title">操作类型：</label>
+										<select ng-model="logs.operType" class="form-control" style="width: 110px" ng-options="key as value for (key,value) in logTypes">
+										    <option value="">所有类型</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label for="title">数据ID：</label>
+										<input ng-model="logs.operId"  type="text" class="form-control form-control-sm" placeholder="数据对象ID"  style="width: 100px">
+									</div>
+									<div class="form-group">
+										<label for="title">关键词：</label> <input id="title" ng-model="logs.operDesc" type="text" class="form-control form-control-sm" placeholder="模糊查询" style="width: 100px">
+									</div>
+									<div class="form-group">
+										<label for="title">操作时间：</label>
+										<div class="input-group" style="width: 150px">
+											<input type="text" id="startTime" name="startTime" ng-model="logs.startTime" placeholder="开始时间" class="form-control datepicker" data-smart-datepicker data-date-format="yy-mm-dd"> <span class="input-group-addon"><i
+												class="fa fa-calendar"></i></span>
+										</div>
+										<div class="input-group" style="width: 150px">
+											<input type="text" id="endTime" name="endTime" ng-model="logs.endTime" placeholder="结束时间" class="form-control datepicker" data-smart-datepicker data-date-format="yy-mm-dd"> <span class="input-group-addon"><i
+												class="fa fa-calendar"></i></span>
+										</div>
+									</div>
+									<span ng-click="searchLogsHandler()" class="btn btn-default"><i class="fa fa-search"></i> 搜索 </span>
+									<span ng-click="resetLogsHandler()" class="btn btn-default"><i class="fa fa-reset"></i> 重置 </span>
+								</form>
+							</div>
+							<table id="logs_table" datatable-custom-toolbar table-options="tableOptions" ng-click="selectTableRowHandler($event)"  class="display projects-table table table-striped table-bordered table-hover" width="100%">
+								<thead>
+									<tr>
+										<th>操作名称</th>
+										<th>操作类型</th>
+										<th>数据ID</th>
+										<th>操作IP</th>
+										<th>操作描述</th>
+										<th>操作时间</th>
+									</tr>
+								</thead>
+						   </table>	
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- end section -->
+	<!-- logs Detailed dialog-->
+	<div id="details_dialog" data-smart-jqui-dialog data-modal="true" data-append-to="#content" data-width="800">
+    	<div data-dialog-title>
+			<div class='widget-header'>
+				<h4>
+					<i class='find'></i> <span>日志详细信息</span>
+				</h4>
+			</div>
+		</div>
+		<div>
+		    <form class="form-horizontal ng-pristine ng-valid">
+		         <fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">ID：</label>
+				        <div class="col-md-10">
+				           <div class="checkbox"><label>{{sysLogs.id}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+				<fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">操作员：</label>
+				        <div class="col-md-10">
+				           <div class="checkbox"><label>{{sysLogs.loginName}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+				<fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">操作名称：</label>
+				        <div class="col-md-10">
+				           <div class="checkbox"><label>{{sysLogs.operation}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+				<fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">操作描述：</label>
+				        <div class="col-md-10">
+				            <div class="checkbox"  style="word-break:break-all"><label>{{sysLogs.operDesc}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+				<fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">操作参数：</label>
+				        <div class="col-md-10">
+				            <div class="checkbox"  style="word-break:break-all"><label>{{sysLogs.operParam}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+			</form>
+		</div>
+		<div data-dialog-buttons>
+			<button type="button" class="btn btn-primary" data-action="cancelDetailFormHandler()">
+				<i class='fa fa-ban'></i>&nbsp; 关闭
+			</button>
+		</div>
+	</div>
+	<!-- end Detailed  dialog-->
+</div>

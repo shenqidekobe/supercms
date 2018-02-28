@@ -1,0 +1,100 @@
+<div id="content">
+	<div class="row" ng-switch=templateType>
+		<big-breadcrumbs ng-switch-when="index" items="['模版','首页模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<big-breadcrumbs ng-switch-when="list" items="['模版','列表模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<big-breadcrumbs ng-switch-when="content" items="['模版','内容模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<big-breadcrumbs ng-switch-when="custom" items="['模版','自定义页模版']" icon="table" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+
+	<!-- start section -->
+	<section id="widget-grid" widget-grid>
+
+		<div class="row">
+		   <article class="col-sm-3 col-md-3 col-lg-3">
+				<div id="locked-widget-widget" data-widget-color="blueDark" data-widget-sortable="false" data-widget-togglebutton="false" data-widget-deletebutton="false"
+				       data-widget-editbutton="false" data-widget-colorbutton="false" data-jarvis-widget>
+					<header>
+						<h2>
+							<strong>模版分类</strong>
+						</h2>
+					</header>
+					<div>
+						<div class="widget-body" ng-switch=templateType>
+							<div ng-switch-when="index" class="tree" sort-treeview sort-type="template_index"></div>
+							<div ng-switch-when="list" class="tree" sort-treeview sort-type="template_list"></div>
+							<div ng-switch-when="content" class="tree" sort-treeview sort-type="template_content"></div>
+							<div ng-switch-when="custom" class="tree" sort-treeview sort-type="template_custom"></div>
+						</div>
+					</div>
+				</div>
+			</article>
+			<article class="col-sm-9 col-md-9 col-lg-9">
+				<div data-jarvis-widget id="normal-table-widget"
+					data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<header>
+						<!-- <span class="widget-icon"> <i class="fa fa-table"></i></span> -->
+						<h2><a class="btn btn-primary" href="javascript:void(0);" ng-click="create();">添加模版</a></h2>
+					</header>
+					<div>
+					   <!--  <div class="row">
+		                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+		                        <div class="input-group">
+		                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+		                            <input class="form-control" placeholder="Filter" type="text" ng-model="query">
+		                        </div>
+		                    </div>
+		                </div> -->
+						<div class="widget-body">
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>序号</th>
+											<th>模版名称</th>
+											<th>创建时间</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="it in lists | filter:query">
+											<td>{{it.id}}</td>
+											<td>{{it.templateName}}</td>
+											<td>{{it.createTime}}</td>
+											<td>
+												<edit ng-Model="it" type="template"><a href="javascript:void(0);">编辑</a></edit>
+												<delete ng-Model="it" type="template"><a href="javascript:void(0);">删除</a></delete>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div style="float:right;">
+									<pagination-widget pager-object="pager" query="list"></pagination-widget>
+								</div>
+							</div>
+						</div>
+					</div>
+			    </div>
+			</article>
+		</div>
+	</section>
+	<!-- end section -->
+	<div id="sort_dialog" data-smart-jqui-dialog data-modal="true" data-append-to="#content" style="display: none;" ng-controller="EditSortCtrl">
+		<div data-dialog-title>
+			<div class='widget-header'>
+				<h4>
+					<i class='{{sortDialog.icon}}'></i> <span>{{sortDialog.title}}</span>
+				</h4>
+			</div>
+		</div>
+		<sort-form></sort-form>
+		<div data-dialog-buttons>
+			<button type="button" class="btn" data-action="submitSortFormHandler()">
+				<i class='fa fa-check'></i>&nbsp; 确定
+			</button>
+			<button type="button" class="btn" data-action="cancelSortFormHandler()">
+				<i class='fa fa-ban'></i>&nbsp; 取消
+			</button>
+		</div>
+	</div>
+</div>

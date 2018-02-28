@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout charset="utf-8"
+				pattern="%d{yy-MM-dd HH:mm:ss} [%t] %-5level %logger{36}(%L) | %msg%n" />
+		</Console>
+		<File name="log4jdbc_file" fileName="logs/log4jdbc.out">
+			pattern="%d{yy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} | %msg%n" />
+		</File>
+		<!-- 
+		<JDBC name="JDBC" tableName="tbl_application_log">
+			<ConnectionFactory class="com.dw.aries.log.Log4j2ConnectionFactory"
+				method="getDatabaseConnection" />
+			<Column name="event_date" isEventTimestamp="true" />
+			<Column name="level" pattern="%level" />
+			<Column name="logger" pattern="%logger" />
+			<Column name="message" pattern="%message" />
+			<Column name="exception" pattern="%ex{full}" />
+		</JDBC>
+		 -->
+	</Appenders>
+	<Loggers>
+		
+		<Root level="WARN">
+			<AppenderRef ref="console" />
+		</Root>
+		
+		<logger name="com.dw" level="trace" />
+		<logger name="com.dw.framework.core.SystemArchitecture" level="WARN" />
+		<logger name="com.dw.suppercms.produce.executor.MakeFileThreadPoolMonitor" level="INFO" />
+		
+		<logger name="org.springframework" level="WARN" />
+		<logger name="org.hibernate" level="WARN" />
+		<logger name="org.terracotta" level="WARN" />
+		<logger name="org.apache.shiro" level="WARN" />
+		<logger name="freemarker" level="WARN" />
+		<logger name="org.reflections" level="WARN" />
+		<logger name="codes.thischwa.c5c" level="WARN" />
+		
+		<!-- 
+		<logger name="com.dw.cms.application.impl" level="ERROR">
+			<AppenderRef ref="JDBC" />
+		</logger>
+		-->
+		<logger name="log4jdbc.log4j2" level="ERROR" additivity="false">
+			<appender-ref ref="log4jdbc_file" />
+		</logger>
+		<logger name="log4jdbc.log4j2" level="WARN" additivity="false">
+			<MarkerFilter marker="LOG4JDBC_NON_STATEMENT" onMatch="DENY" onMismatch="NEUTRAL"/>
+			<appender-ref ref="console" />
+		</logger>
+	</Loggers>
+</Configuration>

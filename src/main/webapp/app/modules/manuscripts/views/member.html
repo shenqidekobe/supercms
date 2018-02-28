@@ -1,0 +1,75 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['投稿设置','用户管理']" icon="fa fa-lg fa-fw fa-cubes" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="locked-widget-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<header>
+						<h2>投稿系统用户</h2>
+					</header>
+					<div>
+						<div class="widget-body no-padding">
+							<div class="widget-body-toolbar">
+								<!-- member table toolbar -->
+								<div class="btn-toolbar">
+								    <div class="btn-group pull-left">
+										<select name="memberType" ng-model="memberType" ng-change="changeMemberHandler()" class="form-control">
+											<option value="">按类型过滤</option>
+											<option value="SEND">投稿用户</option>
+											<option value="AUDIT">审稿用户</option>
+										</select>
+									</div>
+									<div class="btn-group pull-right">
+										<a ng-click="sendAllotHandler()" ng-disabled="!sendSelected" href="#" class="btn btn-default"><i class="fa fa-long-arrow-down"></i>投稿栏目分配</a> 
+										<a ng-click="auditAllotHandler()" ng-disabled="!auditSelected" href="#" class="btn btn-default"><i class="fa fa-long-arrow-up"></i> 审稿分配</a>
+									</div>
+									<div class="btn-group pull-right">
+										<a data-smart-jqui-dialog-launcher="#member_dialog" ng-click="creatememberHandler()" href="#" class="btn btn-default"><i class="fa fa-plus"></i> 创建 </a>
+									    <a data-smart-jqui-dialog-launcher="#member_dialog" ng-click="savememberHandler()" ng-disabled="!rowSelected" href="#" class="btn btn-default"><i class="fa fa-edit"></i> 修改 </a> 
+									    <a href-void ng-click="removememberHandler()" ng-disabled="!rowSelected" class="btn btn-default"><i class="fa fa-minus"></i> 删除</a>
+									</div>
+								</div>
+							</div>
+							<!-- members table -->
+							<table id="members_table" datatable-custom-toolbar table-options="tableOptions" ng-click="selectTableRowHandler($event)" class="table table-striped table-bordered table-hover" width="100%">
+								<thead>
+									<tr>
+										<th>用户类型</th>
+										<th>用户姓名</th>
+										<th>所属单位</th>
+										<th>登录名</th>
+										<th>联系电话</th>
+										<th>创建时间</th>
+										<th>修改时间</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+			</article>
+		</div>
+	</section>
+	<!-- member form dialog-->
+	<div id="member_dialog" data-smart-jqui-dialog data-modal="true" data-append-to="#content">
+		<div data-dialog-title>
+			<div class='widget-header'>
+				<h4>
+					<i class='{{memberDialog.icon}}'></i> <span>{{memberDialog.title}}</span>
+				</h4>
+			</div>
+		</div>
+		<member-form></member-form>
+		<div data-dialog-buttons>
+			<button type="button" class="btn" data-action="submitmemberFormHandler()">
+				<i class='fa fa-check'></i>&nbsp; 确定
+			</button>
+			<button type="button" class="btn" data-action="cancelmemberFormHandler()">
+				<i class='fa fa-ban'></i>&nbsp; 取消
+			</button>
+		</div>
+	</div>
+	<!-- end member form dialog-->
+</div>

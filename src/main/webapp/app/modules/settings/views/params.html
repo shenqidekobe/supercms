@@ -1,0 +1,62 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['系统设置','参数管理']" icon="fa fa-lg fa-fw fa-cubes" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="locked-widget-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<header>
+						<h2>系统参数设置</h2>
+					</header>
+					<div>
+						<div class="widget-body padding">
+							<header>
+							</header>
+							<label class="smart-form col-md-2 control-label">系统管理员邮箱：</label>
+							<form class="form-horizontal ng-pristine ng-valid">
+								<fieldset>
+									<div class="form-group">
+										<div class="col-md-3">
+											<div class="row">
+												<div class="input-group">
+													<input class="form-control" type="email" ng-model="emailParam.paramVal" placeholder="E-mail">
+													<div class="input-group-btn">
+														<button class="btn btn-default" type="button" ng-click="saveEamilHandler()">保存</button>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</form><hr/>
+							<form class="smart-form ng-pristine ng-valid">
+								<fieldset>
+								    <div class="form-group">
+								        <label class="col-md-2 control-label">是否开启撤搞删文件：</label>
+								        <div class="col col-12">
+								            <label class="toggle">
+								                <input type="checkbox" name="recall" ng-model="recallParam.paramVal" ng-value="recallParam.paramVal" ng-checked="recallParam.paramVal" ng-click="saveRecallParamHandler()">
+								                <i data-swchon-text="ON" data-swchoff-text="OFF"></i></label>
+								        </div>
+								    </div>
+								</fieldset>
+								<fieldset>
+								    <div class="form-group">
+								        <label class="col-md-2 control-label">是否开启生成历史文件：</label>
+								        <div class="col col-12">
+								            <label class="toggle">
+								                <input type="checkbox" name="history" ng-model="produceHistoryParam.paramVal" ng-value="produceHistoryParam.paramVal" ng-checked="produceHistoryParam.paramVal" ng-click="saveProduceHistoryParamHandler()">
+								                <i data-swchon-text="ON" data-swchoff-text="OFF"></i></label>
+								        </div>
+								    </div>
+								</fieldset>
+						 </form>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+</div>

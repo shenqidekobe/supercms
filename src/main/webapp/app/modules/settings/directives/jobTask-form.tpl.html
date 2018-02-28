@@ -1,0 +1,79 @@
+<form id="jobTaskForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">标题</label> <label class="input"> <input name="taskTitle" ng-model="jobTask.taskTitle" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">任务名</label> <label class="input"> <input name="taskName" ng-readonly="isEdit" ng-model="jobTask.taskName" type="text">
+				<b class="tooltip tooltip-bottom-right">例如：job1<br/>注：一经创建无法修改</b>
+				</label>
+			</section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">是否开启</label>
+				<div class="inline-group">
+					<label class="radio"> <input type="radio" name="taskState" value="Enable" ng-model="jobTask.taskState"> <i></i>是
+					</label> <label class="radio"> <input type="radio" name="taskState" value="Disable" ng-model="jobTask.taskState"> <i></i>否
+					</label>
+				</div>
+			</section>
+			<section class="col col-6">
+				<label class="label">任务类型</label><label class="select"> 
+					<select name="taskType" ng-model="jobTask.taskType" ng-change="changeTargetHandler()">
+					    <option value="">选择任务类型</option>
+				      	<option value="RefreshSite" ng-selected="RefreshSite">刷新站点首页</option>
+				      	<option value="RefreshColumnList" ng-selected="RefreshColumnList">刷新栏目列表页</option>
+				      <!-- 	<option value="RefreshColumn" ng-selected="RefreshColumn">刷新栏目</option>
+				      	<option value="RefreshColumnContent" ng-selected="RefreshColumnContent">刷新栏目内容</option> -->
+				      	<option value="RefreshCustom" ng-selected="RefreshCustom">刷新自定义页</option>
+				      	<option value="CollectTask" ng-selected="CollectTask">采集任务</option>
+				      	<option value="ResourceTask" ng-selected="ResourceTask">内容中心任务</option>
+				      	<!-- <option value="RebuildDataIndex" ng-selected="RebuildDataIndex">重建数据索引任务</option> -->
+				    </select><i></i>
+			    </label>
+			</section>
+	    </div>
+		<section>
+			<label class="label">时间表达式</label> <label class="input"><input name="id" ng-model="jobTask.id" type="hidden"> 
+			<input name="taskExperess" ng-model="jobTask.taskExperess" type="input">
+			<b class="tooltip tooltip-bottom-right">范例： <br/>
+							   每隔5秒执行一次：*/5 * * * * ?<br/>
+						                 每隔1分钟执行一次：0 */1 * * * ?<br/>
+						                 每天23点执行一次：0 0 23 * * ?<br/>
+						                 每天凌晨1点执行一次：0 0 1 * * ?<br/>
+						                 每月1号凌晨1点执行一次：0 0 1 1 * ?<br/>
+						                 每月最后一天23点执行一次：0 0 23 L * ?<br/>
+						                 每周星期天凌晨1点实行一次：0 0 1 ? * L<br/>
+						                 在26分、29分、33分执行一次：0 26,29,33 * * * ?<br/>
+						                 每天的0点、13点、18点、21点都执行一次：0 0 0,13,18,21 * * ?</b>
+			</label>
+		</section>
+		<section>
+            <label class="label">任务参数</label> <label class="textarea"> <textarea name="taskParams" ng-model="jobTask.taskParams" rows="3" class="custom-scroll"></textarea>
+            <b class="tooltip tooltip-bottom-right">范例： <br/>
+            {'startTime':'2015-08-10','endTime':'2015-10-28','tags':'毛德华'}</b>
+            </label>
+        </section>
+		<section ng-show="!column">
+            <label class="label">任务目标</label><label class="multiselect"> 
+				<select name="taskTarget" multiple="multiple" ng-multiple="true" size="15" ng-model="jobTask.targets"  style="width:544px;">
+				   <option value="all">全部</option>
+				   <option ng-repeat="item in targetList" value="{{item.id}}"  ng-selected="{{item.selected}}" >{{item.title}}</option>
+			    </select><i></i>
+	        </label>
+        </section>
+        <section ng-show="column">
+            <label class="label">任务目标</label><label class="multiselect"> 
+				<select name="taskTarget" multiple="multiple" size="15" ng-model="jobTask.targets" style="width:544px;">
+				    <option value="all">所有栏目</option>
+					<optgroup ng-repeat="(key,value) in targetList" label="{{key}}">
+					    <option ng-repeat="item in value" value="{{item.id}}" ng-selected="{{item.selected}}">{{item.title}}</option>
+					</optgroup>
+			    </select><i></i>
+	        </label>
+        </section>
+	</fieldset>
+</form>

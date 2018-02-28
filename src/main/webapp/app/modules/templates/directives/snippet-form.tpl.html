@@ -1,0 +1,52 @@
+
+<form id="snippetForm" method="post">
+    <input type="hidden" name="id" value="{{snippet.id}}"/>
+    <fieldset>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">片段名称</label>
+                    <input type="text" class="form-control" name="snippetName" ng-model="snippet.snippetName" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    
+    <fieldset>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label class="control-label">片段TAG</label>
+                    <input type="text" class="form-control" name="snippetTag" ng-model="snippet.snippetTag" />
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    
+    <fieldset>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6 selectContainer">
+                    <label class="control-label">片段类型</label>
+                    <select class="form-control" select-sort-option sort-type="template_snippet" obj="snippet" name="sortId">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+
+    <fieldset>
+        <div class="form-group" style="max-width: 90%;">
+            <label class="control-label">模版代码</label>
+            <label class="control-label"><a href="#/explain?rn=blank&sessionId={{sessionId}}"  target="_blank">模版助手</a></label>
+            <textarea class="form-control" name="snippetCode" rows="12" cols="50" ng-model="snippet.snippetCode"></textarea>
+        </div>
+    </fieldset>
+
+   <footer>
+       <button class="btn btn-primary" type="submit">提交</button>
+       <button class="btn btn-default" type="button" ng-click="back();">返回</button>
+    </footer>
+</form>
+ 

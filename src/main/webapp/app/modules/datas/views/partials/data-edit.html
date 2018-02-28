@@ -1,0 +1,16 @@
+<article class="col-sm-12 col-md-12 col-lg-10">
+	<div id="data-edit-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+		<header>
+			<h2>{{model.title}}（{{model.tableCode}}）</h2>
+		</header>
+		<div>
+			<div class="widget-body">
+			    <h2 class="alert alert-warning" ng-if="!model.formCode">请先设置该模型的html表单，再开始添加数据</h2>
+				<form id="data_form" enctype="multipart/form-data" class="smart-form ng-pristine ng-valid" dynamic-section ng-if="model.formCode"></form>
+				<div class="widget-footer">
+					<span ng-if="model.formCode" ng-click="submitHandler()" class="btn btn-sm btn-primary" type="button">保存</span> 
+					<span ng-click="returnHandler()" class="btn btn-sm btn-default" type="button">返回</span>
+				</div>
+			</div>
+		</div>
+</article>

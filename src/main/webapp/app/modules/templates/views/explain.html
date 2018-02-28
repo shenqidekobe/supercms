@@ -1,0 +1,71 @@
+<header id="header"  class="animated fadeInDown" >
+    <div id="logo-group">
+        <span id="logo"> <img src="styles/img/logo1.png" alt="SmartAdmin"> </span>
+    </div>
+</header>
+<div id="main" role="main"  class="animated fadeInDown" >
+
+    <div id="content" class="container">
+        <div class="row">
+			<!-- start section -->
+			<section id="widget-grid" widget-grid>
+		
+				<div id="tabs-pills-widget-widget" data-widget-colorbutton="false"data-widget-editbutton="false" data-widget-togglebutton="false"
+					data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-jarvis-widget>
+					<header>
+						<ul id="widget-tab-1" class="nav pull-left nav-tabs">
+							<li class="active"><a data-toggle="tab" href="#tabs-a"><span
+									class="hidden-mobile hidden-tablet">指令说明</span> </a></li>
+							<li><a data-toggle="tab" href="#tabs-b"><span
+									class="hidden-mobile hidden-tablet">插件说明</span></a></li>
+						</ul>
+					</header>
+					<div>
+						<div class="widget-body no-padding">
+							<div class="tab-content padding-10">
+								<div id="tabs-a" class="tab-pane fade in active">
+									<div class="pull-left btn-group-horizontal col-sm-12 col-md-12 col-lg-12">
+									    <label>查看模型属性：</label>
+									    <label class="select">
+											<select ng-model="selectedItem"
+												ng-change="changeModelHandler()" class="form-control"
+												style="width: 200px;">
+												<option value="">--选择模型--</option>
+												<option ng-repeat="item in modelList" value="{{item.id}}">{{item.title}}</option>
+											</select>
+										</label> 
+									</div>
+									<div class="pull-left btn-group-horizontal col-sm-12 col-md-12 col-lg-12"><hr/>
+										<p>  站点id：	sid</p>
+										<p>栏目id：	cid， 栏目名：cname，栏目更多页： clink，父栏目id： pid</p>
+										<p>列表变量名：	list，用来在列表页模板里引用列表变量</p>
+										<p>对象变量名：	obj，用来在最终页模板里引用对象变量</p>
+										<p>声明变量名：	<#assign excludeIds="">，在list循环中累加<#assign excludeIds=obj.id+","+excludeIds></p>
+										<p>列表指令：	<@rec id="1" pages="10" pageSize="6" dir="" title="习大大" sort="" tags=""></@rec>用来指定列表参数</p>
+										<p>列表指令参数说明：title表示按标题查询，tags表示按标签查询以逗号分隔，excludeId表示排除的数据ID，stick=1表示查询置顶的数据</p>
+										<p>分页条指令：	<@page style="1"/>，用来嵌在rec指令里指定是否显示分页条</p>
+										<p>片段指令：	<@cons name="name"/>，用来替换常量的模板内容</p>
+									</div>
+									<div class="pull-left btn-group-horizontal col-sm-12 col-md-12 col-lg-12"><hr/>
+									     <p ng-repeat="item in fieldList">{{item.title}}：{{item.fieldCode}}</p>
+									</div>
+								</div>
+								<div id="tabs-b" class="tab-pane fade">
+								    <div class="pull-left btn-group-horizontal col-sm-12 col-md-12 col-lg-12"><hr/>
+									    <p>1、插件指令：	<@plugin name="name" zanCls="zanCls" numCls="numCls" sidAttr="站点ID属性" cidAttr="栏目ID属性" ridAttr="文章ID属性" linkAttr="文章地址属性"/>，除name外的属性都需约定</p>
+										<p>2、所有插件名称说明：	点赞插件：zan ；点击量插件：hits </p>
+										<p>3、点赞排行榜指令：	<@praiseTop sid="1" cid="1" topNum="1-7-30" organ="Y" pageSize="6" dir="desc或者asc"/>用来指定列表参数,默认排序方式为倒序(desc表示倒序,asc表示正序),多个ID以逗号隔开</p>
+										<p>4、点赞排行榜属性说明：	标题：title,链接：link,点赞数量：num,单位名：organName</p>
+										<p>5、点击量排行榜指令：	<@hitsTop sid="1" cid="1" topNum="1-7-30" organ="Y" pageSize="6" dir="desc或者asc"/>用来指定列表参数,默认排序方式为倒序(desc表示倒序,asc表示正序),多个ID以逗号隔开</p>
+										<p>6、点击量排行榜属性说明：	标题：title,链接：link,点击数量：num,单位名：organName</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	<!-- end section -->
+     </div>
+   </div>
+</div>

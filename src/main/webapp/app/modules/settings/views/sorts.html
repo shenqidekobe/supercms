@@ -1,0 +1,74 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['系统设置','分类管理']" icon="fa fa-lg fa-fw fa-sitemap" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="locked-widget-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<header>
+						<h2>分类</h2>
+					</header>
+					<div>
+						<div class="widget-body no-padding">
+							<!-- column table toolbar -->
+							<div class="widget-body-toolbar">
+								<div class="btn-toolbar">
+									<div class="btn-group pull-left">
+										<select name="searchType" ng-model="searchType" ng-change="changeSortTypeHandler()" class="form-control">
+						                    <option value="template_index">首页模版分类</option>
+						                    <option value="template_list">列表模版分类</option>
+						                    <option value="template_content">内容模版分类</option>
+						                    <option value="template_custom">自定义模版分类</option>
+						                    <option value="template_snippet">模版片段分类</option>
+						                    <option value="custom_page">自定义页分类</option>
+						                    <option value="datasource">数据源分类</option>
+						                    <option value="data_tag">数据标签分类</option>
+										</select>
+									</div>
+									<div class="btn-group pull-right">
+										<a data-smart-jqui-dialog-launcher="#sort_dialog" ng-click="createSortHandler()" href="#" class="btn btn-default"><i class="fa fa-plus"></i> 创建 </a> 
+										<a data-smart-jqui-dialog-launcher="#sort_dialog" ng-click="saveSortHandler()" ng-disabled="!rowSelected" href="#" class="btn btn-default"><i class="fa fa-edit"></i> 修改 </a> 
+										<a href-void ng-click="removeSortHandler()" ng-disabled="!rowSelected" class="btn btn-default pull-right"><i class="fa fa-minus"></i> 删除 </a>
+									</div>
+								</div>
+							</div>
+							<!-- columns table -->
+							<table id="sorts_table" datatable-treetable table-options="tableOptions" ng-click="selectTableRowHandler($event)" class="table table-striped table-bordered table-hover treetable" width="100%">
+								<thead>
+									<tr>
+										<th>分类名</th>
+										<th>类型</th>
+										<th>创建时间</th>
+										<th>修改时间</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+			</article>
+		</div>
+	</section>
+
+	<!-- sort form dialog-->
+	<div id="sort_dialog" data-smart-jqui-dialog data-modal="true" data-append-to="#content">
+		<div data-dialog-title>
+			<div class='widget-header'>
+				<h4>
+					<i class='{{sortDialog.icon}}'></i> <span>{{sortDialog.title}}</span>
+				</h4>
+			</div>
+		</div>
+		<sort-form></sort-form>
+		<div data-dialog-buttons>
+			<button type="button" class="btn" data-action="submitSortFormHandler()">
+				<i class='fa fa-check'></i>&nbsp; 确定
+			</button>
+			<button type="button" class="btn" data-action="cancelSortFormHandler()">
+				<i class='fa fa-ban'></i>&nbsp; 取消
+			</button>
+		</div>
+	</div>
+	<!-- end sort form dialog-->
+</div>

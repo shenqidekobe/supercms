@@ -1,0 +1,46 @@
+{
+    "username": "测试员",
+    "picture": "styles/img/avatars/sunny.png",
+    "menus" : [
+        {"uisref": "app.dashboard", "title": "控制台",  "icon": "fa fa-lg fa-fw fa-home", "lvl": "1", "children": []},
+        {"uisref": "app.security", "title": "用户中心",  "icon": "fa fa-lg fa-fw fa-medkit", "lvl": "1", "children": [
+            {"uisref": "app.security.user", "title": "用户管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.security.role", "title": "角色管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.security.menu", "title": "菜单管理",  "icon": "", "lvl": "2", "children": []}
+        ]},
+        {"uisref": "app.module", "title": "网站结构",  "icon": "fa fa-lg fa-fw  fa-sitemap", "lvl": "1", "children": [
+            {"uisref": "app.modules.site", "title": "站点管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.modules.column", "title": "栏目管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.modules.custom", "title": "自定义页管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.modules.make", "title": "批量更新",  "icon": "", "lvl": "2", "children": []}
+        ]},
+        {"uisref": "app.template", "title": "网站模板",  "icon": "fa fa-lg fa-fw fa-table", "lvl": "1", "children": [
+            {"uisref": "app.template.index", "title": "首页模版",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.template.list", "title": "列表模版",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.template.content", "title": "内容模版",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.template.custom", "title": "自定义页模版",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.template.snippet", "title": "模版片段",  "icon": "", "lvl": "2", "children": []}
+        ]},
+         {"uisref": "app.data", "title": "数据中心",  "icon": "fa fa-lg fa-fw fa-database", "lvl": "1", "children": [
+            {"uisref": "app.datas.model", "title": "模型管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.datas.datasource", "title": "数据源管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.datas.tag", "title": "标签管理",  "icon": "", "lvl": "2", "children": []},
+             {"uisref": "app.datas.data", "title": "数据管理",  "icon": "", "lvl": "2", "children": []}
+        ]},
+        {"uisref": "app.settings", "title": "系统设置",  "icon": "fa fa-lg fa-fw fa-cog", "lvl": "1", "children": [
+            {"uisref": "app.settings.plugin", "title": "插件管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.settings.task", "title": "计划任务",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.settings.sort", "title": "分类管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.settings.params", "title": "系统参数",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.settings.systemlogs", "title": "系统日志",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.settings.producelogs", "title": "生成日志",  "icon": "", "lvl": "2", "children": []}
+        ]},
+        {"uisref": "app.manuscripts", "title": "投稿设置",  "icon": "fa fa-lg fa-fw fa-file", "lvl": "1", "children": [
+            {"uisref": "app.manuscripts.organ", "title": "单位管理",  "icon": "", "lvl": "2", "children": []},
+            {"uisref": "app.manuscripts.member", "title": "用户管理",  "icon": "", "lvl": "2", "children": []}
+        ]},
+        {"uisref": "app.filemanager", "title": "网盘",  "icon": "fa fa-lg fa-fw fa-hdd-o", "lvl": "1", "children": []}
+      
+    ],
+    "activity": 12
+}

@@ -1,0 +1,35 @@
+<form id="permissionForm" class="smart-form ng-pristine ng-valid" style="height:400px;overflow-x:hidden;overflow-y:auto;">
+	<fieldset>
+		<div class="row">
+			<div class="col col-6">
+				<section ng-repeat="item in allPermissions" ng-if="$index < 4">
+					<label class="checkbox"> <input id="lvl1" type="checkbox" name="permission"  checklist-model="selectedPermissions" checklist-value="item.perm" value="{{item.perm}}" > <i></i>{{item.title}}
+					</label>
+					<section ng-repeat="item in item.chidldren"  style="padding-left:24px">
+						<label class="checkbox"> <input id="lvl2" type="checkbox" name="permission"  checklist-model="selectedPermissions" checklist-value="item.perm" value="{{item.perm}}" /> <i></i>{{item.title}}
+						</label>
+						<div class="inline-group"  style="padding-left:24px">
+							<label class="checkbox inline" ng-repeat="item in item.chidldren"> <input type="checkbox" name="permission"  checklist-model="selectedPermissions" checklist-value="item.perm" value="{{item.perm}}" /> <i></i>{{item.title}}
+							</label>
+						</div>
+					</section>
+				</section>
+			</div>
+			<div class="col col-6">
+			     <section ng-repeat="item in allPermissions" ng-if="$index >=4">
+                    <label class="checkbox"> <input id="lvl1" type="checkbox" name="permission"  checklist-model="selectedPermissions" checklist-value="item.perm" value="{{item.perm}}"/> <i></i>{{item.title}}
+                    </label>
+                    <section ng-repeat="item in item.chidldren"  style="padding-left:24px">
+                        <label class="checkbox"> <input id="lvl2" type="checkbox" name="permission"  checklist-model="selectedPermissions" checklist-value="item.perm" value="{{item.perm}}" /> <i></i>{{item.title}}
+                        </label>
+                        <div class="inline-group"  style="padding-left:24px">
+                            <label class="checkbox inline" ng-repeat="item in item.chidldren"> <input type="checkbox" name="permission"  checklist-model="selectedPermissions" checklist-value="item.perm" value="{{item.perm}}" /> <i></i>{{item.title}}
+                            </label>
+                        </div>
+                    </section>
+                </section>
+			</div>
+		</div>
+	</fieldset>
+	<fieldset></fieldset>
+</form>

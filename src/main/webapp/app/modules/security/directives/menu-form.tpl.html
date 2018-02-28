@@ -1,0 +1,25 @@
+<form id="menuForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+	    <section>
+            <label class="label">上级菜单</label>
+            <label>
+                <dw-select-tree data-place-holder="选择上级菜单" data-id="editParentId" data-items="menusTree.data" data-current-item="menusTree.editCurrentItem"></dw-select-tree>
+            </label>
+        </section>
+		<section>
+			<label class="label">名字</label> <label class="input"> <input name="title" ng-model="menu.title" type="text">
+			</label>
+		</section>
+		<section>
+			<label class="label">链接地址</label> <label class="input"><input name="id" ng-model="menu.id" type="hidden"> <input name="uisref" ng-model="menu.uisref" type="text"> </label>
+		</section>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">图标</label> <label class="input"> <input name="icon" ng-model="menu.icon" type="text"></label>
+			</section>
+			<section class="col col-6">
+				<label class="label">排序号</label> <label class="input"> <input name="ordinal" ng-model="menu.ordinal" type="text"></label>
+			</section>
+		</div>
+	</fieldset>
+</form>

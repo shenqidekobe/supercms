@@ -1,0 +1,83 @@
+<article class="col-sm-12 col-md-12 col-lg-10">
+	<div id="locked-widget-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+		<header>
+			<h2>模型：{{model.title}}[{{model.tableCode}}]</h2>
+		</header>
+		<div>
+			<div class="widget-body no-padding"">
+				<div class="widget-body-toolbar">
+					<form class="form-inline">
+                       <div class="btn-group" data-toggle="buttons">
+                           <label ng-show="datasource.passStatus!='NO'" class="btn btn-default btn-sm  active" ng-click="filter.checkStatus='PASS'"> <input type="radio" name="style-switch"> 审核通过</label> 
+                           <label ng-show="datasource.passStatus!='NO'" class="btn btn-default btn-sm" ng-click="filter.checkStatus='ORIGIN' "> <input type="radio" name="style-switch"> 未提交</label> 
+                           <label has-permission="'app.datas.data.pass1'" ng-show="datasource.passStatus!='NO'" class="btn btn-default btn-sm" ng-click="filter.checkStatus='FIRST' "> <input type="radio" name="style-switch"> 一审</label>
+                           <label has-permission="'app.datas.data.pass2'" ng-show="datasource.passStatus=='TWO'" class="btn btn-default btn-sm" ng-click="filter.checkStatus='SECOND'"> <input type="radio" name="style-switch"> 二审</label>
+                       </div>
+						<div class="form-group">
+							<label for="title">标题：</label> <input id="title" ng-model="filter.title" type="text" class="form-control form-control-sm" placeholder="模糊查询" style="width: 150px">
+						</div>
+						<div class="form-group">
+							<label for="title">创建时间：</label>
+							<div class="input-group" style="width: 150px">
+								<input type="text" id="startTime" name="startTime" ng-model="filter.startTime" placeholder="开始时间" class="form-control datepicker" data-smart-datepicker data-date-format="yy-mm-dd"> <span class="input-group-addon"><i
+									class="fa fa-calendar"></i></span>
+							</div>
+							<div class="input-group" style="width: 150px">
+								<input type="text" id="endTime" name="endTime" ng-model="filter.endTime" placeholder="结束时间" class="form-control datepicker" data-smart-datepicker data-date-format="yy-mm-dd"> <span class="input-group-addon"><i
+									class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+						<span ng-click="searchDataHandler()" class="btn btn-default"><i class="fa fa-search"></i> 搜索 </span>
+						<div class="form-group pull-right">
+							<span ng-click="createDataHandler()" class="btn btn-default"><i class="fa fa-plus"></i> 创建 </span>
+						</div>
+					</form>
+				</div>
+				<table id="datas_table" datatable-custom-toolbar table-options="tableOptions" ng-click="selectTableRowHandler($event)" class="display projects-table table table-striped table-bordered table-hover" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th></th>
+							<th>标题</th>
+							<th>审核状态</th>
+							<th>创建时间</th>
+							<th>修改时间</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<caption class="smart-datatable-child-format" data-child-control="td.details-control"></caption>
+				</table>
+			</div>
+			
+		</div>
+		
+</article>
+<script type="text/ng-template" id="captions">
+        <table cellpadding="0" cellspacing="0" border="1" class="table table-hover table-condensed">
+            <tr ng-repeat="columnData in d.columnDatas">
+                <td ng-bind-html="columnData.column.site.title + '：' + columnData.column.detail"></td>
+                <td ng-bind-html="columnData.column.site.productDomain + columnData.column.site.dirName + columnData.column.dirWebpath +'/' + (d.create_time|date:'yyyy-MM-dd') + '/a' + d.id +'.'+ columnData.column.extensionName">
+                <td>
+                    <a id="ref" columnId="{{columnData.columnId}}" class="btn btn-xs btn-default" data-tooltip-placement="top" data-tooltip="作为引用添加到数据源"><i class="fa fa-anchor"></i></a>
+                    <a id="preview" columnId="{{columnData.columnId}}" class="btn btn-xs btn-default" data-tooltip-placement="top" data-tooltip="预览"><i class="fa fa-eye"></i></a>
+                </td>
+            </tr>
+        </table>
+    </script>
+    <script type="text/ng-template" id="select-muli-datasource">
+        <form style='min-width:370px'>
+            <div id="selectMultiDatasourceHtml" class="tree">
+                <ul data-smart-treeview data-items="datasourcesTree.checkableData" role="tree"></ul>
+            </div>
+       </form>
+    </script>
+    <script type="text/ng-template" id="select-tag">
+        <form class="smart-form">
+        <select id="select2" multiple data-placeholder="请选择标签">
+        </select>
+        </form>
+    </script>
+<a id="select-multi-datasource-popover" style="visibility: hidden;z-index: -100"  href-void class="btn btn-default btn-xs" select-multi-datasource-popover="1" data-popover-placement="left" data-popover-title="<div><label id='tipTitle'>复制到数据源</label><button id='close-select-multi-datasource' class='btn btn-default btn-xs pull-right' type='button'>关闭</button>&nbsp;&nbsp;<button id='confirm-select-multi-datasource' class='btn btn-default btn-xs pull-right' type='submit'>保存</button></div>"> <i class='fa fa-copy'></i></a>
+<a id="select-tag-popover" style="visibility: hidden;z-index: -100"  href-void class="btn btn-default btn-xs" select-tag-popover="1" data-popover-placement="left" data-popover-title="<div><label>数据标签</label><button id='close-select-tag' class='btn btn-default btn-xs pull-right' type='button'>关闭</button>&nbsp;&nbsp;<button id='confirm-select-tag' class='btn btn-default btn-xs pull-right' type='submit'>保存</button></div>"> <i class='fa fa-tags'></i></a>
+<style>
+.popover.left {top:0px !important;}
+</style>

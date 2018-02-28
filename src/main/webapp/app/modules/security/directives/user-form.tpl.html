@@ -1,0 +1,43 @@
+<form id="userForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">名字</label> <label class="input"> <input name="name" ng-model="user.name" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">账号</label> <label class="input"><input name="id" ng-model="user.id" type="hidden"> <input name="username" ng-model="user.username" type="text"> </label>
+			</section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">密码</label> <label class="input"> <input id="password" name="password" ng-model="user.password" type="password"></label>
+			</section>
+			<section class="col col-6">
+				<label class="label">重复密码</label> <label class="input"> <input name="repeat" ng-model="user.repeat" type="password">
+				</label>
+			</section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">电子邮件</label> <label class="input"> <input name="email" ng-model="user.email" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">手机号码</label> <label class="input"> <input name="telephone" ng-model="user.telephone" type="text">
+				</label>
+			</section>
+		</div>
+		<section>
+			<label class="label">角色</label> <label class="select"> <select name="roleId" ng-model="user.roleId">
+					<option value="">----选择角色----</option>
+					<option ng-repeat="role in roles" value="{{role.id}}">{{role.name}}</option>
+			</select> <i></i>
+			</label>
+		</section>
+		<section>
+			<label class="label">描述</label> <label class="textarea"> <textarea name="description" ng-model="user.description" rows="2" class="custom-scroll"></textarea>
+			</label>
+		</section>
+	</fieldset>
+</form>

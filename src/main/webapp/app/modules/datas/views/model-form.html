@@ -1,0 +1,38 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['数据','模型','表单管理']" icon="fa fa-lg fa-fw fa-database" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="locked-widget-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<header>
+						<h2>{{model.title}}</h2>
+						<div class="widget-toolbar"></div>
+					</header>
+					<div>
+						<div class="widget-body">
+							<div class="row">
+								<div class="col-sm-6">
+									<label>默认生成的表单</label>
+									<pre style="height: 450px" ng-bind="model.defaultFormCode"></pre>
+								</div>
+								<div class="col-sm-6">
+									<label>最终展示的表单</label>
+									<form>
+										<textarea class="form-control" style="height: 450px" ng-model="model.formCode"></textarea>
+									</form>
+								</div>
+							</div>
+							<div class="widget-footer">
+								<button ng-click="saveModelFormRequest()" class="btn btn-sm btn-primary" type="button">保存</button>
+								<button ng-click="$state.go('app.datas.model')" class="btn btn-sm btn-default" type="button">返回</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+		</div>
+	</section>
+</div>

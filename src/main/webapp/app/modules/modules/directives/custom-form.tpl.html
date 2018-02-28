@@ -1,0 +1,47 @@
+<form id="customForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<section>
+			<label class="label">标题</label> <label class="input"><input name="id" ng-model="custom.id" type="hidden"> <input name="title" ng-model="custom.title" type="text"> </label>
+		</section>
+		<section>
+			<label class="label">分类</label>
+			<label>
+				<dw-select-tree data-place-holder="选择分类" data-id="editSortId" data-items="sortsTree.data" data-current-item="sortsTree.editCurrentItem"></dw-select-tree>
+			</label>
+		</section>
+		<section>
+			<label class="label">路径</label> <label class="input"> <input name="location" ng-model="custom.location" type="text">
+			</label>
+		</section>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">扩展名</label> <label class="select"> <select name="extensionName" ng-model="custom.extensionName">
+						<option value="shtml">shtml</option>
+						<option value="html">html</option>
+						<option value="json">json</option>
+						<option value="js">js</option>
+						<option value="css">css</option>
+				</select> <i></i>
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">自定义模板</label>
+				<label class="select">
+                <input name="customTemplateId" type="hidden"></input>
+                <hierarchical-selector placeholder="请选择自定义模板" data="customTemplates" can-select-item="item.t == 'template'" on-selection-changed="custom.customTemplateId = items[0].id" selection="customTemplate" no-button/>
+                </label>
+				<!-- 
+				<label class="select"> <select name="customTemplateId" ng-model="custom.customTemplateId">
+						<option value="">选择首页模板</option>
+						<option ng-repeat="item in customTemplates" value="{{item.id}}">{{item.templateName}}</option>
+				</select> <i></i>
+				</label>
+				-->
+			</section>
+		</div>
+		<section>
+			<label class="label">描述</label> <label class="textarea"> <textarea name="description" ng-model="custom.description" rows="2" class="custom-scroll"></textarea>
+			</label>
+		</section>
+	</fieldset>
+</form>

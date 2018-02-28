@@ -1,0 +1,40 @@
+<form id="datasourceForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<section>
+			<label class="label">标题</label> <label class="input"><input name="id" ng-model="datasource.id" type="hidden"> <input name="title" ng-model="datasource.title" type="text"> </label>
+		</section>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">分类</label> <label> <dw-select-tree data-place-holder="选择分类" data-id="editSortId" data-items="sortsTree.data" data-current-item="sortsTree.editCurrentItem"></dw-select-tree>
+				</label>
+			</section>
+			<section class="col col-6">
+                <label class="label">需要审核数据</label> 
+                <div class="inline-group">
+                    <label class="radio"> <input type="radio" name="required" value="NO" ng-model="datasource.passStatus"> <i></i>不审</label> 
+                    <label class="radio"> <input type="radio" name="required" value="ONE" ng-model="datasource.passStatus"> <i></i>一审</label>
+                    <label class="radio"> <input type="radio" name="required" value="TWO" ng-model="datasource.passStatus"> <i></i>二审</label>
+                </div>
+            </section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">数据模型</label> <label class="select"><select name="modelId" ng-model="datasource.modelId">
+						<option value="">选择数据模型</option>
+						<option ng-repeat="item in models" value="{{item.id}}">{{item.title}}</option>
+				</select> <i></i> </label>
+			</section>
+			<section class="col col-6">
+				<label class="label">数据来源</label> <label class="select"> <select name="origin" ng-model="datasource.origin">
+						<option value="">选择数据来源</option>
+						<option ng-repeat="item in origins" value="{{item.value}}">{{item.name}}</option>
+				</select> <i></i>
+				</label>
+			</section>
+		</div>
+		<section>
+			<label class="label">描述</label> <label class="textarea"> <textarea name="description" ng-model="datasource.description" rows="2" class="custom-scroll"></textarea>
+			</label>
+		</section>
+	</fieldset>
+</form>

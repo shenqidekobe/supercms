@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<supercms>
+    
+    <logConfig operation="添加站点" urlStyle="rest" urlMethod="POST" urlPattern="/modules/sites/*" />
+	<logConfig operation="修改站点" urlStyle="rest" urlMethod="PUT" urlPattern="/modules/sites/*" />
+	<logConfig operation="删除站点" urlStyle="rest" urlMethod="DELETE" urlPattern="/modules/sites/*" />
+	<logConfig operation="添加栏目" urlStyle="rest" urlMethod="POST" urlPattern="/modules/columns/*" />
+	<logConfig operation="修改栏目" urlStyle="rest" urlMethod="PUT" urlPattern="/modules/columns/*" />
+	<logConfig operation="删除栏目" urlStyle="rest" urlMethod="DELETE" urlPattern="/modules/columns/*" />
+	<logConfig operation="添加自定义页" urlStyle="rest" urlMethod="POST" urlPattern="/modules/customs/*" />
+	<logConfig operation="修改自定义页" urlStyle="rest" urlMethod="PUT" urlPattern="/modules/customs/*" />
+	<logConfig operation="删除自定义页" urlStyle="rest" urlMethod="DELETE" urlPattern="/modules/customs/*" />
+	
+	<logConfig operation="添加模版" urlStyle="rest" urlMethod="POST" urlPattern="/templates/template/*" />
+	<logConfig operation="修改模版" urlStyle="rest" urlMethod="PUT" urlPattern="/templates/template/*" />
+	<logConfig operation="删除模版" urlStyle="rest" urlMethod="DELETE" urlPattern="/templates/template/*" />
+	<logConfig operation="添加模版片段" urlStyle="rest" urlMethod="POST" urlPattern="/templates/snippet/*" />
+	<logConfig operation="修改模版片段" urlStyle="rest" urlMethod="PUT" urlPattern="/templates/snippet/*" />
+	<logConfig operation="删除模版片段" urlStyle="rest" urlMethod="DELETE" urlPattern="/templates/snippet/*" />
+	
+	<logConfig operation="添加分类" urlStyle="rest" urlMethod="POST" urlPattern="/systems/sort/*" />
+	<logConfig operation="修改分类" urlStyle="rest" urlMethod="PUT" urlPattern="/systems/sort/*" />
+	<logConfig operation="删除分类" urlStyle="rest" urlMethod="DELETE" urlPattern="/systems/sort/*" />
+	
+</supercms>

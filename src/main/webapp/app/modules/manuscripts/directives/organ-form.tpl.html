@@ -1,0 +1,37 @@
+<form id="organForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<section>
+			<label class="label">单位名称</label> <label class="input"><input name="id" ng-model="organ.id" type="hidden"> <input name="organName" ng-model="organ.organName" type="text">
+			</label>
+		</section>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">最大投稿数量</label> <label class="input"> <input name="manuMaxCount" ng-model="organ.manuMaxCount" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">投稿截止时间</label> <label class="input"> 
+				<input id="abortTime" name="abortTime" readonly="readonly" ng-model="organ.abortTime" data-smart-datepicker change-year="true" min-current="true" data-date-format='yy-mm-dd' type="text">
+				</label>
+			</section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">单位等级</label> <label class="select"> 
+				   <select name="organLevel" ng-model="organ.organLevel">
+				       <option value="">选择等级</option>
+					   <option ng-repeat="item in levels" value="{{item}}">{{item}}</option>
+				   </select> <i></i>
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">平台单位ID</label> <label class="input"> <input name="platformOrganId" ng-model="organ.platformOrganId" type="text">
+				</label>
+			</section>
+		</div>
+		<section>
+            <label class="label">描述</label> <label class="textarea"> <textarea name="description" ng-model="organ.description" rows="3" class="custom-scroll"></textarea>
+            </label>
+        </section>
+	</fieldset>
+</form>

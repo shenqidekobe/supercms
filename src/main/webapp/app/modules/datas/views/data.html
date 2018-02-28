@@ -1,0 +1,41 @@
+<style>
+.dropzone {
+width: 200px;
+height: 200px;
+min-height: 0px !important;
+}   
+</style>
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['数据中心','数据管理']" icon="fa fa-lg fa-fw fa-database" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+		<div class="row">
+			<article class="col-sm-12 col-md-12 col-lg-2" >
+				<div id="tabs-pills-widget-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<header>
+						<h2>视图</h2>
+					</header>
+					<div style="height:800px;overflow-x:hidden;overflow-y:auto;">
+						<div class="widget-body">
+
+							<div class="btn-group" data-toggle="buttons">
+								<label class="btn btn-default btn-sm active" ng-click="filter.view = 'columnTree'"> <input type="radio" name="style-switch">按栏目
+								</label> <label class="btn btn-default btn-sm" ng-click="filter.view = 'dataSourceTree'"> <input type="radio" name="style-switch">按数据源
+								</label>
+							</div>
+							<div id="columnTree" class="tree" ng-show="filter.view=='columnTree'">
+								<ul data-smart-treeview data-items="columnsTree.data" role="tree"></ul>
+							</div>
+							<div id="datasourceTree" class="tree" ng-show="filter.view=='dataSourceTree'">
+								<ul data-smart-treeview data-items="datasourcesTree.data" role="tree"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</article>
+			<ng-include src="partialView"></ng-include>
+		</div>
+	</section>
+</div>

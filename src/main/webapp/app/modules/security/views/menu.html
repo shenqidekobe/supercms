@@ -1,0 +1,72 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['用户中心','菜单管理']" icon="fa fa-lg fa-fw fa-medkit" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+		<div class="row">
+			<article class="col-sm-12">
+				<div id="locked-widget-widget" data-jarvis-widget data-widget-color="blueDark" data-widget-togglebutton="false" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-deletebutton="false">
+					<header>
+						<h2>菜单列表</h2>
+					</header>
+					<div>
+						<div class="widget-body no-padding">
+							<div class="widget-body-toolbar">
+								<!-- menu table toolbar -->
+								<div class="btn-toolbar">
+								    <div class="btn-group pull-left">
+                                    <form class="smart-form">
+                                    </form>
+                                    </div>
+                                    <!-- 
+                                    <div class="btn-group pull-right">
+                                         <a href-void ng-click="generatePermissionFileHandler()" href="#" class="btn btn-default"><i class="fa fa-database"></i> 生成权限文件 </a>
+                                    </div>
+                                     -->
+									<div class="btn-group pull-right">
+										<a data-smart-jqui-dialog-launcher="#menu_dialog" ng-click="createMenuHandler()" href="#" class="btn btn-default"><i class="fa fa-plus"></i> 创建 </a> <a data-smart-jqui-dialog-launcher="#menu_dialog" ng-click="saveMenuHandler()"
+											ng-disabled="!rowSelected" href="#" class="btn btn-default"><i class="fa fa-edit"></i> 修改 </a> <a href-void ng-click="removeMenuHandler()" ng-disabled="!rowSelected" class="btn btn-default"><i class="fa fa-minus"></i> 删除
+										</a>
+									</div>
+								</div>
+							</div>
+							<!-- menu table -->
+							<table id="menus_table" datatable-treetable table-options="tableOptions" ng-click="selectTableRowHandler($event)" class="table table-striped table-bordered table-hover treetable" width="100%">
+								<thead>
+									<tr>
+										<th>菜单名</th>
+										<th>链接地址</th>
+										<th>图标</th>
+										<th>排序号</th>
+										<th>创建时间</th>
+										<th>修改时间</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+					</div>
+			</article>
+		</div>
+	</section>
+	<!-- menu form dialog-->
+	<div id="menu_dialog" data-smart-jqui-dialog data-modal="true" data-append-to="#content">
+		<div data-dialog-title>
+			<div class='widget-header'>
+				<h4>
+					<i class='{{menuDialog.icon}}'></i> <span>{{menuDialog.title}}</span>
+				</h4>
+			</div>
+		</div>
+		<menu-form></menu-form>
+		<div data-dialog-buttons>
+			<button type="button" class="btn" data-action="submitMenuFormHandler()">
+				<i class='fa fa-check'></i>&nbsp; 确定
+			</button>
+			<button type="button" class="btn" data-action="cancelMenuFormHandler()">
+				<i class='fa fa-ban'></i>&nbsp; 取消
+			</button>
+		</div>
+	</div>
+	<!-- end menu form dialog-->
+</div>

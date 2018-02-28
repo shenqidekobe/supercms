@@ -1,0 +1,42 @@
+<form id="siteForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<section>
+			<label class="label">标题</label> <label class="input"><input name="id" ng-model="site.id" type="hidden"> <input name="title" ng-model="site.title" type="text">
+			</label>
+		</section>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">测试环境域名</label> <label class="input"> <input name="testDomain" ng-model="site.testDomain" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">生产环境域名</label> <label class="input"> <input name="productDomain" ng-model="site.productDomain" type="text">
+				</label>
+			</section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">站点目录</label> <label class="input"> <input name="dirName" ng-model="site.dirName" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">首页模板</label>
+				<label class="select">
+                <input name="homeTemplateId" type="hidden"></input>
+                <hierarchical-selector placeholder="请选择首页模板" data="homeTemplates" can-select-item="item.t == 'template'" on-selection-changed="site.homeTemplateId = items[0].id" selection="homeTemplate" no-button/>
+                </label>
+				<!-- 
+				<label class="select"> <select name="homeTemplateId" ng-model="site.homeTemplateId">
+						<option value="">选择首页模板</option>
+						<option ng-repeat="item in homeTemplates" value="{{item.id}}">{{item.templateName}}</option>
+				</select> <i></i>
+				</label>
+				-->
+			</section>
+		</div>
+		<section>
+            <label class="label">描述</label> <label class="textarea"> <textarea name="description" ng-model="site.description" rows="2" class="custom-scroll"></textarea>
+            </label>
+        </section>
+	</fieldset>
+</form>

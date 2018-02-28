@@ -1,0 +1,39 @@
+<form id="sortForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<section>
+			<label class="label">类型</label> <label class="select" ng-if="!isEdit">
+			    <select name="sortType" ng-model="sort.sortType" ng-change="changeSortTypeHandler2()" >
+                    <option value="template_index">首页模版分类</option>
+                    <option value="template_list">列表模版分类</option>
+                    <option value="template_content">内容模版分类</option>
+                    <option value="template_custom">自定义模版分类</option>
+                    <option value="template_snippet">模版片段分类</option>
+                    <option value="custom_page">自定义页分类</option>
+                    <option value="datasource">数据源分类</option>
+                    <option value="data_tag">数据标签分类</option>
+				</select>
+			</label>
+			<label class="input"  ng-if="isEdit" ng-switch=sort.sortType>
+			    <input name="sortType" ng-model="sort.sortType" type="hidden"> 
+			    <input ng-switch-when="template_index" value="首页模版分类" type="text"  readonly="readonly">
+			    <input ng-switch-when="template_list" value="列表模版分类" type="text"  readonly="readonly">
+			    <input ng-switch-when="template_content" value="内容模版分类" type="text"  readonly="readonly">
+			    <input ng-switch-when="template_custom" value="自定义模版分类" type="text"  readonly="readonly">
+			    <input ng-switch-when="template_snippet" value="模版片段分类" type="text"  readonly="readonly">
+			    <input ng-switch-when="custom_page" value="自定义页分类" type="text"  readonly="readonly">
+			    <input ng-switch-when="datasource" value="数据源分类" type="text"  readonly="readonly">
+			    <input ng-switch-when="data_tag" value="数据标签分类" type="text"  readonly="readonly">
+			</label>
+		</section>
+		<section>
+			<label class="label">上级</label>
+			<label>
+                <dw-select-tree data-place-holder="选择上级" data-id="editParentId" data-items="sortsTree.data" data-current-item="sortsTree.editCurrentItem"></dw-select-tree>
+            </label>
+		</section>
+		<section>
+			<label class="label">名称</label> <label class="input"><input name="id" ng-model="sort.id" type="hidden"> <input name="sortName" ng-model="sort.sortName" type="text">
+			</label>
+		</section>
+	</fieldset>
+</form>

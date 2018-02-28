@@ -1,0 +1,128 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['系统设置','生成日志']"
+			icon="fa fa-lg fa-fw fa-sitemap"
+			class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+
+	<!-- start section -->
+	<section id="widget-grid" widget-grid>
+
+		<div id="tabs-pills-widget-widget" data-widget-colorbutton="false"
+			data-widget-editbutton="false" data-widget-togglebutton="false"
+			data-widget-deletebutton="false" data-widget-fullscreenbutton="false"
+			data-widget-custombutton="false" data-jarvis-widget>
+			<header>
+			    <h2>
+					<strong>文件生成日志</strong>
+				</h2>
+			</header>
+			<div>
+			  <div class="widget-body no-padding">
+		    	<div id="tabs-a" class="widget-body-toolbar">
+					<form class="form-inline">
+					    <div class="form-group">
+							<label for="title">执行员：</label>
+							<select ng-model="logs.userId" class="form-control" style="width: 110px" ng-options="item.id as item.name for item in users">
+							    <option value="">所有用户</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="title">任务类型：</label>
+							<select ng-model="logs.produceType" class="form-control" style="width: 160px">
+							    <option value="">所有类型</option>
+							    <option value="index">生成首页</option><option value="content,list">生成内容及列表页</option><option value="list">生成列表页</option>
+							    <option value="content">生成内容页</option><option value="custom">生成自定义页</option><option value="history">历史列表页</option>
+							    <option value="directive">指令异常</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="title">生成结果：</label>
+							<select ng-model="logs.produceResult" class="form-control" style="width: 110px">
+							    <option value="">所有结果</option>
+							    <option value="SUCCESS">成功</option>
+							    <option value="FAIL">失败</option>
+							    <option value="PART_SUCCESS">部分成功</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label for="title">关键词：</label> <input id="title" ng-model="logs.produceDesc" type="text" class="form-control form-control-sm" placeholder="模糊查询" style="width: 100px">
+						</div>
+						<div class="form-group">
+							<label for="title">生成时间：</label>
+							<div class="input-group" style="width: 150px">
+								<input type="text" id="startTime" name="startTime" ng-model="logs.startTime" placeholder="开始时间" class="form-control datepicker" data-smart-datepicker data-date-format="yy-mm-dd"> <span class="input-group-addon"><i
+									class="fa fa-calendar"></i></span>
+							</div>
+							<div class="input-group" style="width: 150px">
+								<input type="text" id="endTime" name="endTime" ng-model="logs.endTime" placeholder="结束时间" class="form-control datepicker" data-smart-datepicker data-date-format="yy-mm-dd"> <span class="input-group-addon"><i
+									class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+						<span ng-click="searchLogsHandler()" class="btn btn-default"><i class="fa fa-search"></i> 搜索 </span>
+						<span ng-click="resetLogsHandler()" class="btn btn-default"><i class="fa fa-reset"></i> 重置 </span>
+					</form>
+				</div>
+				<table id="logs_table" datatable-custom-toolbar table-options="tableOptions" ng-click="selectTableRowHandler($event)"  class="display projects-table table table-striped table-bordered table-hover" width="100%">
+					<thead>
+						<tr>
+							<th>任务类型</th>
+							<th>生成结果</th>
+							<th>生成数量</th>
+							<th>生成说明</th>
+							<th>生成时间</th>
+						</tr>
+					</thead>
+				</table>	
+			</div>
+		</div>
+		</div>
+	</section>
+	<!-- end section -->
+	<!-- logs Detailed dialog-->
+	<div id="details_dialog" data-smart-jqui-dialog data-modal="true" data-append-to="#content" data-width="800">
+    	<div data-dialog-title>
+			<div class='widget-header'>
+				<h4>
+					<i class='find'></i> <span>日志详细信息</span>
+				</h4>
+			</div>
+		</div>
+		<div>
+		    <form class="form-horizontal">
+				<fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">ID：</label>
+				        <div class="col-md-10 ">
+				           <div class="checkbox"><label>{{proLogs.id}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+				<fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">生成描述：</label>
+				        <div class="col-md-10">
+				           <div class="checkbox"  style="word-break:break-all"><label>{{proLogs.produceDesc}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+				<fieldset>
+				    <div class="form-group">
+				        <label class="col-md-2 control-label">错误信息：</label>
+				        <div class="col-md-10">
+				           <div class="checkbox"  style="word-break:break-all"><label>{{proLogs.produceResultMsg}}</label></div>
+				        </div>
+				    </div>
+				</fieldset>
+			</form>
+		</div>
+		<div data-dialog-buttons>
+			<button type="button" class="btn btn-primary" data-action="cancelDetailFormHandler()">
+				<i class='fa fa-ban'></i>&nbsp; 关闭
+			</button>
+		</div>
+	</div>
+	<!-- end Detailed  dialog-->
+	
+</div>

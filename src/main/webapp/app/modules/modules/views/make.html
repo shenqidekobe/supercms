@@ -1,0 +1,147 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['网站结构','批量生成']" icon="fa fa-lg fa-fw fa-sitemap" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+
+	<!-- start section -->
+	<section id="widget-grid" widget-grid>
+	
+	<div id="tabs-pills-widget-widget" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false"
+        data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-jarvis-widget>
+	    <header>
+	        <ul id="widget-tab-1" class="nav pull-left nav-tabs">
+	            <li class="active">
+	                <a data-toggle="tab" href="#tabs-a"><span class="hidden-mobile hidden-tablet">快捷生成</span> </a>
+	            </li>
+	            <li>
+	                <a data-toggle="tab" href="#tabs-b"><span class="hidden-mobile hidden-tablet">自定义条件生成</span></a>
+	            </li>
+	            <li>
+	                <a data-toggle="tab" href="#tabs-c"><span class="hidden-mobile hidden-tablet">批量生成</span></a>
+	            </li>
+	        </ul>
+	    </header>
+	    <div>
+	    <div class="widget-body no-padding">
+	      <div class="tab-content padding-10">
+		   <div id="tabs-a" class="tab-pane fade in active">
+				<div  class="btn-group-horizontal">
+				    <input  type="hidden" ng-model="currentUser"/>
+				    <button type="button" class="btn btn-default" ng-click="refreshCurrentUserAll();">刷新自己的所有信息</button>&nbsp;&nbsp;&nbsp;
+				    <button type="button" class="btn btn-default" ng-click="refreshNewInfo();">刷新新增的最终页和列表页</button>
+				    <br/><br/>
+				</div>
+		    </div>
+	       <div id="tabs-b" class="tab-pane fade">
+					<div>
+					    <div class="btn-group pull-left btn-group-vertical col-sm-3 col-md-3 col-lg-3">
+						    <select ng-model="selectedItem1" ng-change="changeSiteHandler1()" class="form-control" style="width:200px;">
+								<option value="">--选择站点--</option>
+								<option ng-repeat="item in siteList" value="{{item.id}}"  ng-selected="selectedItem1 == item.id" >{{item.title}}</option>
+							</select>
+							<select select-column-option ng-model="condition.columnIds1" items="columnList1" multiple="multiple" size="15" style="width:200px;"></select>
+							<br/><br/>
+						</div>
+						<div class="btn-group pull-right col-sm-9 col-md-9 col-lg-9">
+							<form id="makeColumnForm" method="post">
+							    <fieldset>
+							        <div class="form-group">
+							            <div class="row">
+							                <div class="col-md-10">
+							                    <label class="control-label">选择时间：</label>
+							                                                                 从<input type="text" ng-model="condition.startTime" id="startTime" readonly="readonly" data-smart-datepicker data-date-format='yy-mm-dd' style="width:72px;">&nbsp;到
+								  			    <input type="text" ng-model="condition.endTime" id="endTime" readonly="readonly" data-smart-datepicker data-date-format='yy-mm-dd' style="width:72px;">之间的数据
+							                </div>
+							            </div>
+							        </div>
+							    </fieldset>
+							    <fieldset>
+							        <div class="form-group">
+							            <div class="row">
+							                <div class="col-md-10">
+							                    <label class="control-label">是否重复刷新：</label>
+							                    <input type="checkbox" ng-model="condition.repeatFlag" checked="checked">重复生成
+							                </div>
+							            </div>
+							        </div>
+							    </fieldset>
+							    <footer>
+							       <button class="btn btn-default" type="button" ng-click="refreshContentPage();">生成最终页</button>&nbsp;&nbsp;&nbsp;
+							       <button class="btn btn-default" type="button" ng-click="resetForm();">重置表单</button>&nbsp;&nbsp;&nbsp;
+							       <button class="btn btn-default" type="button" ng-click="refreshListPage();">生成列表页</button>
+							    </footer>
+							
+							</form>
+						</div>
+					</div>
+			 </div>
+			 <div  id="tabs-c" class="tab-pane fade">
+					<div class="form-group">
+					   <div class="col-sm-3 col-md-3 col-lg-3">
+						    <form class="smart-form">
+							    <dw-select-tree  data-place-holder="--选择分类--" data-id="searchSortId" data-items="sortsTree.data" data-current-item="sortsTree.searchCurrentItem"></dw-select-tree>
+							</form>
+							<select ng-model="customIds" multiple="multiple" size="15" style="width:215px;">
+								<option ng-repeat="item in customList" value="{{item.id}}">{{item.title}}</option>
+							</select>
+							
+							<button class="btn btn-default" type="button" style="width:215px;" ng-click="refreshCustomPage();">刷新自定义页</button>
+							<br/>
+							<br/>
+						</div>
+						<div class="col-sm-3 col-md-3 col-lg-3">
+						    <span style="height:32px;display:block;">选择站点</span>
+							<select ng-model="siteIds" multiple="multiple" size="15" style="width:200px;">
+								<option ng-repeat="item in siteList" value="{{item.id}}">{{item.title}}</option>
+							</select>
+							
+							<button class="btn btn-default" type="button" style="width:200px;" ng-click="refreshIndexPage();">刷新站点首页</button>
+							<br/>
+							<br/>
+						</div>
+						<div class="col-sm-3 col-md-3 col-lg-3">
+						    <select ng-model="selectedItem2" ng-change="changeSiteHandler2()"  class="form-control" style="width:200px;">
+								<option value="">--选择站点--</option>
+								<option ng-repeat="item in siteList" value="{{item.id}}"  ng-selected="selectedItem2 == item.id" >{{item.title}}</option>
+							</select>
+							
+							<select ng-model="columnIds2" select-column-option name="sortId" items="columnList2" multiple="multiple" size="15" style="width:200px;"></select>
+							
+							<button class="btn btn-default" type="button" style="width:200px;" ng-click="refreshContentAndListPage();">刷新栏目内容页和列表页</button>
+							<br/>
+							<br/>
+						</div>
+					</div>
+		      </div>
+		     </div>
+		    </div>
+		   </div>
+		 </div>
+	</section>
+	<!-- end section -->
+</div>
+<div id="showBox" class="col-sm-6 col-md-6 col-lg-6" ng-show="showBoxFlag" style="left:auto; right:0; top:0;width:400px;">
+   <p>
+      <strong ng-bind="progress.title"></strong>
+   </p>
+       <div class="bar-holder">
+          <span ng-bind-html="progress.justDesc"></span>
+       </div>
+       <div class="bar-holder">
+           <span class="txt-color-blue pull-right" ng-show="complete"><i class="fa fa-lg fa-check"></i></span>
+           <div class="progress">
+               <div class="progress-bar bg-color-teal" data-transitiongoal="{{progress.transitiongoal}}"></div>
+           </div>
+       </div>
+       <div class="bar-holder">
+          <div>错误信息：</div>
+          <div style="height:170px; overflow: auto">
+               <p> <strong ng-bind="progress.errorTitle"></strong></p><br/>
+               <span ng-bind="progress.errorContent"></span>
+          </div>
+       </div>
+       <div class="bar-holder">
+          <div><button class="btn btn-primary"  ng-click="cancelBox();">关闭</button></div>
+       </div>
+</div>

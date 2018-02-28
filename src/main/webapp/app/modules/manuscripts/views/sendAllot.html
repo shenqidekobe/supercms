@@ -1,0 +1,61 @@
+<div id="content">
+	<div class="row">
+		<big-breadcrumbs items="['投稿设置','用户管理']" icon="fa fa-lg fa-fw fa-cubes" class="col-xs-12 col-sm-7 col-md-7 col-lg-4"></big-breadcrumbs>
+		<div smart-include="/app/layout/partials/sub-header.tpl.html"></div>
+	</div>
+	<section id="widget-grid" data-widget-grid>
+	    <div id="tabs-pills-widget-widget" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false"
+           data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-jarvis-widget>
+              <header>
+              </header>
+              <div>
+	              <div class="row">	
+	                 <div class="col-md-12">
+	                    <span>当前投稿用户：{{memberName}}</span>
+	                 </div>
+	              </div><hr/>
+				   <div class="bootstrap-duallistbox-container row"> 
+				        <div class="box1 col-md-4 filtered">  
+				            <label>待选栏目</label>
+					        <select multiple="multiple" ng-model="leftSelected" size="20" class="form-control"
+					             ng-options="item.title for item in dataSources track by item.serviceId">
+					        </select>
+				        </div>
+				        <div class="box1 col-md-2">
+				            <br/><br/><br/><br/><br/><br/><br/>
+							<button type="button" class="btn move btn-default" title="右移" ng-click="moveRight()"><i class="glyphicon glyphicon-arrow-right"></i></button>
+							<br/><br/><br/><br/><br/>
+					        <button type="button" class="btn move btn-default" title="左移" ng-click="moveLeft()"><i class="glyphicon glyphicon-arrow-left"></i></button>
+						</div>
+				        <div class="box1 col-md-4">  
+				            <label>是否需要审核&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;已选栏目</label>
+				            <div class="tree-control">
+					                <div class="tree-view">
+										 <ul class="tree-container">
+										   <li ng-repeat="item in dataSourceItems" ng-click="selected($event)">
+											    <div class="item-container selected" id="{{item.serviceId}}" index="{{$index}}">
+											        <div class="item-details">
+											           <input class="tree-checkbox" ng-model="item.isAudit" type="checkbox" ng-checked="{{item.isAudit}}">
+											           {{item.title}}
+											        </div>
+											    </div>
+											</li>
+										 </ul>
+									</div>
+								</div>
+							</div>
+			            </div>
+			       </div>
+	      
+			   </div>
+		   </div>
+		   <div class="form-actions row">
+               <div class="col-md-12">
+                   <button class="btn btn-default" type="button" ng-click="back()"> 返回</button>
+                   <button class="btn btn-primary" type="button" ng-click="saveSelected()">
+                       <i class="fa fa-save"></i>提交
+                   </button>
+               </div>
+           </div>
+    </section>
+</div>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:jms="http://www.springframework.org/schema/jms" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"  xmlns:websocket="http://www.springframework.org/schema/websocket"  
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+	http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+	http://www.springframework.org/schema/jms http://www.springframework.org/schema/jms/spring-jms.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
+	
+	<aop:aspectj-autoproxy proxy-target-class="true"/>  
+	<task:annotation-driven />
+	
+	<context:component-scan base-package="com.dw.suppercms.infrastructure.web.websocket" />
+	
+	
+	<mvc:interceptors>
+		<mvc:interceptor> 
+		   <mvc:mapping path="/**"/>
+		   <bean class="com.dw.suppercms.infrastructure.interceptor.SystemLogInterceptor"></bean>
+	    </mvc:interceptor> 
+	</mvc:interceptors>
+	
+	<!-- <bean id="makeFileSocket" class="com.dw.suppercms.infrastructure.web.websocket.MakeFileWebSocketHandler"/>
+	<websocket:handlers>
+        <websocket:mapping path="/endpoint/makeFileSocket" handler="makeFileSocket"/>
+        <websocket:handshake-interceptors>
+            <bean class="com.dw.suppercms.infrastructure.web.websocket.HandshakeInterceptor"/>
+        </websocket:handshake-interceptors>
+        <websocket:sockjs/>
+    </websocket:handlers> -->
+    
+    <context:property-placeholder location="classpath:app.properties"/>
+	
+	<bean id="makeIndexExecutorService" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool" destroy-method="shutdownNow">
+		<constructor-arg value="${makeIndexThreadPoolSize}"/>
+	</bean>
+	<bean id="makeListExecutorService" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool" destroy-method="shutdownNow">
+		<constructor-arg value="${makeListThreadPoolSize}"/>
+	</bean>
+	<bean id="makeContentExecutorService" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool" destroy-method="shutdownNow">
+		<constructor-arg value="${makeContentThreadPoolSize}"/>
+	</bean>
+	<bean id="makeCustomExecutorService" class="java.util.concurrent.Executors" factory-method="newFixedThreadPool" destroy-method="shutdownNow">
+		<constructor-arg value="${makeCustomThreadPoolSize}"/>
+	</bean>
+	
+	<bean id="stdSchedulerFactory" class="org.quartz.impl.StdSchedulerFactory" scope="singleton"/>
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="applicationContextSchedulerContextKey" value="applicationContextKey"/> 
+	</bean>
+	
+	<jaxws:endpoint implementor="com.dw.suppercms.infrastructure.webservice.impl.ManuscriptWebServiceImpl"
+		address="/manuscriptWebService">
+	</jaxws:endpoint>
+	 
+	
+</beans>

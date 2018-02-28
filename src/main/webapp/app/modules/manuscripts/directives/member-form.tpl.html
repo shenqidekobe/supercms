@@ -1,0 +1,53 @@
+<form id="memberForm" class="smart-form ng-pristine ng-valid">
+	<fieldset>
+		<section>
+			<label class="label">用户名称</label> <label class="input"><input name="id" ng-model="member.id" type="hidden"> <input name="memberName" ng-model="member.memberName" type="text">
+			</label>
+		</section>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">登录名称</label> <label class="input"> <input name="loginName" placeholder="投稿系统登录帐号" ng-model="member.loginName" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">登录密码</label> <label class="input"> 
+				<input id="password" name="password" ng-model="member.password" placeholder="投稿系统登录密码" type="password">
+				</label>
+			</section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">用户电话</label> <label class="input"> <input name="phone" ng-model="member.phone" type="text">
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">用户邮箱</label> <label class="input"> 
+				<input name="email" ng-model="member.email" type="text">
+				</label>
+			</section>
+		</div>
+		<div class="row">
+			<section class="col col-6">
+				<label class="label">单位</label> <label class="select"> 
+				   <select name="organId" ng-model="member.organId">
+				       <option value="">选择单位</option>
+					   <option ng-repeat="item in organs" value="{{item.id}}">{{item.organName}}</option>
+				   </select> <i></i>
+				</label>
+			</section>
+			<section class="col col-6">
+				<label class="label">用户类型</label> <label class="select"> 
+				   <select name="memberType" ng-model="member.memberType">
+				       <option value="">选择类型</option>
+				       <option value="SEND">投稿用户</option>
+				       <option value="AUDIT">审稿用户</option>
+				   </select> <i></i>
+				</label>
+			</section>
+		</div>
+		<section>
+            <label class="label">描述</label> <label class="textarea"> <textarea name="remark" ng-model="member.remark" rows="3" class="custom-scroll"></textarea>
+            </label>
+        </section>
+	</fieldset>
+</form>
